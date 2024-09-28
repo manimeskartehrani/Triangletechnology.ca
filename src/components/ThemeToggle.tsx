@@ -2,7 +2,7 @@
 import React, { ContextType, useContext } from "react";
 
 import Image from "next/image";
-import { ThemeContext } from "@/context/ThemeContext";
+import { ThemeContext } from "../context/ThemeContext";
 
 export function ThemeToggle() {
   const { theme, toggle } = useContext(ThemeContext);
