@@ -6,8 +6,6 @@ import celestialLogo from "@/assets/logo-celestial.png";
 import apexLogo from "@/assets/logo-apex.png";
 import quantumLogo from "@/assets/logo-quantum.png";
 import { motion } from "framer-motion";
-import { log } from "console";
-import { randomInt } from "crypto";
 
 export const LogoTicker = () => {
   return (

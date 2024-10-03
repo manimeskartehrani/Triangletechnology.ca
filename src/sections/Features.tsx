@@ -119,7 +119,7 @@ const FeatureTab = (
 
 export const Features = () => {
   const [selectedTab, setSelectedTab] = useState(0);
-  const backgroundPositionX = useMotionValue(tabs[0].backgroundPositionX);
+  // const backgroundPositionX = useMotionValue(tabs[0].backgroundPositionX);
   return (
     <section className="py-20 md:py-24">
       <div className="container">
