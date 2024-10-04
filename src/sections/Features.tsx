@@ -74,6 +74,7 @@ const FeatureTab = (
       ease: "linear",
       repeatType: "loop",
     };
+
     animate(xPercentage, [0, 100, 100, 0, 0], options);
     animate(yPercentage, [0, 0, 100, 100, 0], options);
   }, [tab.selected]);
@@ -119,7 +120,38 @@ const FeatureTab = (
 
 export const Features = () => {
   const [selectedTab, setSelectedTab] = useState(0);
-  // const backgroundPositionX = useMotionValue(tabs[0].backgroundPositionX);
+  const backgroundPositionX = useMotionValue(tabs[0].backgroundPositionX);
+  const backgroundPositionY = useMotionValue(tabs[0].backgroundPositionY);
+  const backgroundSizeX = useMotionValue(tabs[0].backgroundSizeX);
+
+  const backgroundPosition = useMotionTemplate`${backgroundPositionX}% ${backgroundPositionY}%`;
+  const backgroundSize = useMotionTemplate`${backgroundSizeX}% auto`;
+
+  const handleSelectTab = (index: number) => {
+    setSelectedTab(index);
+
+    const animateOptions: ValueAnimationTransition = {
+      duration: 2,
+      ease: "easeInOut",
+    };
+
+    animate(
+      backgroundSizeX,
+      [backgroundSizeX.get(), tabs[index].backgroundSizeX],
+      animateOptions
+    );
+    animate(
+      backgroundPositionX,
+      [backgroundPositionX.get(), tabs[index].backgroundPositionX],
+      animateOptions
+    );
+    animate(
+      backgroundPositionY,
+      [backgroundPositionY.get(), tabs[index].backgroundPositionY],
+      animateOptions
+    );
+  };
+
   return (
     <section className="py-20 md:py-24">
       <div className="container">
@@ -135,7 +167,7 @@ export const Features = () => {
             <FeatureTab
               {...tab}
               selected={selectedTab === tabIndex}
-              onClick={() => setSelectedTab(tabIndex)}
+              onClick={() => handleSelectTab(tabIndex)}
               key={tab.title}
             />
           ))}
@@ -143,7 +175,11 @@ export const Features = () => {
         <div className="border border-white/20 p-2.5 rounded-xl mt-3">
           <motion.div
             className="aspect-video bg-cover border border-white/20 rounded-lg"
-            style={{ backgroundImage: `url(${productImage.src})` }}
+            style={{
+              backgroundPosition,
+              backgroundSize,
+              backgroundImage: `url(${productImage.src})`,
+            }}
           ></motion.div>
         </div>
       </div>
