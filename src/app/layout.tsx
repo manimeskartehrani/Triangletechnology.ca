@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Triangle Landing Page",
-  description: "A landing page created by Triangle",
+  description: "Triangle Technology",
 };
 
 export default function RootLayout({
