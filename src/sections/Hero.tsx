@@ -29,10 +29,10 @@ export const Hero = () => {
       transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
     >
       <div className="absolute inset-0 bg-[radial-gradient(75%_75%_at_center_center,_var(--tw-gradient-stops))] from-[rgb(140,69,255,.5)_15%] via-[rgb(14,0,36,.5)_78%], to-transparent"></div>
-      {/* <div className="absolute h-64 w-64 bg-purple-500 rounded-full border border-white/20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(50%_50%_at_16.8%_18.3%,_var(--tw-gradient-stops))] from-white via-[rgb(184,148,255)_37.7%] to-[rgb(24,0,66)] shadow-[-20px_-20px_50px_rgb(255,255,255,.5),-20px_-20px_80px_rgb(255,255,255,.1),0_0_50px_rgb(140,69,255)]"></div> */}
       {/* T shape starts */}
-      <div className="bg-purple-500 h-10 w-40 md:w-80 md:h-14 border border-white/20 absolute top-[25%] md:top-[28.25%] left-0 right-0 m-auto bg-[radial-gradient(50%_50%_at_16.8%_18.3%,_var(--tw-gradient-stops))] from-white via-[rgb(184,148,255)_37.7%] to-[rgb(24,0,66)] shadow-[-20px_-20px_50px_rgb(255,255,255,.1),-20px_-20px_80px_rgb(255,255,255,.1),0_0_50px_rgb(140,69,255)]"></div>
-      <div className="bg-purple-500 h-40 w-10 md:h-[300px] md:w-14 border border-white/20 absolute top-[31%] md:top-[45%] bottom-0 m-auto left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(50%_50%_at_16.8%_18.3%,_var(--tw-gradient-stops))] from-white via-[rgb(184,148,255)_37.7%] to-[rgb(24,0,66)] shadow-[-20px_-20px_50px_rgb(255,255,255,.1),-20px_-20px_80px_rgb(255,255,255,.1),0_0_50px_rgb(140,69,255)]"></div>
+      <div className="bg-purple-500 h-10 w-40 md:w-80 md:h-14 border rounded-full border-white/20 absolute top-[25%] md:top-[28.25%] left-0 right-0 m-auto bg-[radial-gradient(50%_50%_at_16.8%_18.3%,_var(--tw-gradient-stops))] from-white via-[rgb(184,148,255)_37.7%] to-[rgb(24,0,66)] shadow-[-20px_-20px_50px_rgb(255,255,255,.1),-20px_-20px_80px_rgb(255,255,255,.1),0_0_50px_rgb(140,69,255)]"></div>
+      {/* ] */}
+      <div className="bg-purple-500 h-40 w-10 md:h-[300px] md:w-14 border rounded-full border-white/20 absolute top-[31%] md:top-[45%] bottom-0 m-auto left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(50%_50%_at_16.8%_18.3%,_var(--tw-gradient-stops))] from-white via-[rgb(184,148,255)_37.7%] to-[rgb(24,0,66)] shadow-[-20px_-20px_50px_rgb(255,255,255,.1),-20px_-20px_80px_rgb(255,255,255,.1),0_0_50px_rgb(140,69,255)]"></div>
       {/* T shape ends */}
       {/* Start Ring 1 */}
       <motion.div
