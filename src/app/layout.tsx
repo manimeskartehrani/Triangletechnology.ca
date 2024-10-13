@@ -11,8 +11,8 @@ import { Footer } from "@/sections/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Triangle Landing Page",
-  description: "Triangle Technology 3",
+  title: "Triangle Landing Page 2",
+  description: "Triangle Technology 5",
 };
 
 export default function RootLayout({
