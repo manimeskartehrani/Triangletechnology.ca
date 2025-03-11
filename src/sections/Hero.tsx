@@ -76,7 +76,7 @@ export const Hero = () => {
       {/* End Ring 3 */}
       <div className="container relative mt-16 md:mt-44">
         <h1 className="text-[90px] font-semibold tracking-tighter bg-white bg-[radial-gradient(100%_100%_at_top_left,_var(--tw-gradient-stops))] from-white via-white to-[rgba(74,32,138,.5)] text-transparent bg-clip-text text-center md:text-[160px] md:leading-none">
-          Triangle
+          Triangle2
         </h1>
         <p className="text-lg md:text-xl text-white/70 mt-2 md:mt-5 text-center max-w-xl mx-auto">
           Elevate your site&apos;s visibility effortlessly with AI, where smart
