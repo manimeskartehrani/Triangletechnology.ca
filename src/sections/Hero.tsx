@@ -28,18 +28,21 @@ export const Hero = () => {
       animate={{ backgroundPositionX: starBg.width }}
       transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(75%_75%_at_center_center,_var(--tw-gradient-stops))] from-[rgb(140,69,255,.5)_15%] via-[rgb(14,0,36,.5)_78%], to-transparent"></div>
+      <div className="absolute inset-0 [background:radial-gradient(75%_75%_at_center_center,rgba(140,69,255,0.5)_15%,rgba(14,0,36,0.5)_78%,transparent)]"></div>
+
       {/* T shape starts */}
-      <div className="bg-purple-500 h-10 w-40 md:w-80 md:h-14 border rounded-full border-white/20 absolute top-[25%] md:top-[28.25%] left-0 right-0 m-auto bg-[radial-gradient(50%_50%_at_16.8%_18.3%,_var(--tw-gradient-stops))] from-white via-[rgb(184,148,255)_37.7%] to-[rgb(24,0,66)] shadow-[-20px_-20px_50px_rgb(255,255,255,.1),-20px_-20px_80px_rgb(255,255,255,.1),0_0_50px_rgb(140,69,255)]"></div>
+      <div className=" bg-purple-500 h-10 w-40 md:w-80 md:h-14 border rounded-full border-white/20 absolute top-[25%] md:top-[28.25%] left-0 right-0 m-auto bg-radial-[50%_50%_at_16.8%_18.3%] from-white via-[rgb(184,148,255)_37.7%] to-[rgb(24,0,66)] shadow-[-20px_-20px_50px_rgba(255,255,255,.1),-20px_-20px_80px_rgba(255,255,255,.1),0_0_50px_rgb(140,69,255)]"></div>
+      {/* bg-radial-gradient(50%_50%_at_16.8%_18.3%,_var(--tw-gradient-stops)) from-white via-[rgb(184,148,255)_37.7%] to-[rgb(24,0,66)] */}
+      {/* bg-radial-[at_25%_25%] from-white to-zinc-900 to-75%" */}
       {/* ] */}
-      <div className="bg-purple-500 h-40 w-10 md:h-[300px] md:w-14 border rounded-full border-white/20 absolute top-[31%] md:top-[45%] bottom-0 m-auto left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(50%_50%_at_16.8%_18.3%,_var(--tw-gradient-stops))] from-white via-[rgb(184,148,255)_37.7%] to-[rgb(24,0,66)] shadow-[-20px_-20px_50px_rgb(255,255,255,.1),-20px_-20px_80px_rgb(255,255,255,.1),0_0_50px_rgb(140,69,255)]"></div>
+      <div className=" bg-purple-500 h-40 w-10 md:h-[300px] md:w-14 border rounded-full border-white/20 absolute top-[31%] md:top-[45%] bottom-0 m-auto left-1/2 -translate-x-1/2 -translate-y-1/2 bg-radial-[50%_50%_at_16.8%_18.3%] from-white via-[rgb(184,148,255)_37.7%] to-[rgb(24,0,66)] shadow-[-20px_-20px_50px_rgba(255,255,255,.1),-20px_-20px_80px_rgba(255,255,255,.1),0_0_50px_rgb(140,69,255)]"></div>
       {/* T shape ends */}
       {/* Start Ring 1 */}
       <motion.div
-        style={{
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
+        // style={{
+        //   translateX: "-50%",
+        //   translateY: "-50%",
+        // }}
         animate={{ rotate: "1turn" }}
         transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
         className="absolute h-[344px] w-[344px] md:h-[580px] md:w-[580px] border rounded-full opacity-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -52,20 +55,20 @@ export const Hero = () => {
       </motion.div>
       {/* Start Ring 2 */}
       <motion.div
-        style={{
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
+        // style={{
+        //   translateX: "-50%",
+        //   translateY: "-50%",
+        // }}
         animate={{ rotate: "-1turn" }}
         transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
         className="absolute h-[444px] w-[444px] md:h-[780px] md:w-[780px] rounded-full border border-white/20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-dashed"
       ></motion.div>
       {/* Start Ring 3 */}
       <motion.div
-        style={{
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
+        // style={{
+        //   translateX: "-50%",
+        //   translateY: "-50%",
+        // }}
         animate={{ rotate: "1turn" }}
         transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
         className="absolute h-[544px] w-[544px] md:h-[980px]  md:w-[980px] opacity-20 rounded-full border border-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -75,8 +78,8 @@ export const Hero = () => {
       </motion.div>
       {/* End Ring 3 */}
       <div className="container relative mt-16 md:mt-44">
-        <h1 className="text-[90px] font-semibold tracking-tighter bg-white bg-[radial-gradient(100%_100%_at_top_left,_var(--tw-gradient-stops))] from-white via-white to-[rgba(74,32,138,.5)] text-transparent bg-clip-text text-center md:text-[160px] md:leading-none">
-          Triangle2
+        <h1 className="text-[90px] font-semibold tracking-tighter bg-white bg-radial-[100%_100%_at_top_left] from-white via-white to-[rgba(74,32,138,.5) text-transparent bg-clip-text text-center md:text-[160px] md:leading-none">
+          Triangle
         </h1>
         <p className="text-lg md:text-xl text-white/70 mt-2 md:mt-5 text-center max-w-xl mx-auto">
           Elevate your site&apos;s visibility effortlessly with AI, where smart

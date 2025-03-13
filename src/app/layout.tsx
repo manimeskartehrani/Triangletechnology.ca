@@ -11,8 +11,8 @@ import { Footer } from "@/sections/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Triangle Landing Page 2",
-  description: "Triangle Technology 5",
+  title: "Triangle",
+  description: "Triangle Technology",
 };
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={twMerge(inter.className, " text-white antialiased  ")}>
         <ThemeContextProvider>
           <ThemeProvider>
-            <div className="min-h-screen bg-black dark:bg-[#0f172a] ">
+            <div className="min-h-screen bg-black ">
               <div className=" ml-auto mr-auto">
                 <Header />
                 {children}

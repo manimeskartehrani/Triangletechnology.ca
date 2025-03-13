@@ -9,7 +9,7 @@ import { LogoTicker } from "@/sections/LogoTicker";
 import { Testimonials } from "@/sections/Testimonials";
 import { PropsWithChildren, ReactHTMLElement } from "react";
 
-export default function Home(children: PropsWithChildren) {
+export default function Home() {
   return (
     <div>
       <Hero />

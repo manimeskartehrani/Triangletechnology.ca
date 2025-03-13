@@ -47,7 +47,8 @@ export const CallToAction = () => {
     [-300, 300]
   );
 
-  const [mouseX, mouseY] = useRelativeMousePosition(borderedDivRef);
+  const [mouseX, mouseY] = useRelativeMousePosition(borderedDivRef as RefObject<HTMLElement>)
+
 
   const maskImage = useMotionTemplate`radial-gradient(50% 50% at ${mouseX}px ${mouseY}px, black, transparent)`;
 

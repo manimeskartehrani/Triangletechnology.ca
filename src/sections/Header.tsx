@@ -52,7 +52,7 @@ export const Header = () => {
               </Link>
             </nav>
           </div>
-          <div className="gap-6 items-center hidden sm:flex ">
+          <div className="gap-6 items-center hidden sm:flex mr-4">
             <Button text="Join" />
             <ThemeToggle />
             <AuthLinks />
