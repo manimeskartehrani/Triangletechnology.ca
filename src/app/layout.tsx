@@ -26,7 +26,7 @@ export default function RootLayout({
         <ThemeContextProvider>
           <ThemeProvider>
             <div className="min-h-screen bg-black ">
-              <div className=" ml-auto mr-auto">
+              <div className=" ml-auto mr-auto dark:bg-black">
                 <Header />
                 {children}
                 <Footer />

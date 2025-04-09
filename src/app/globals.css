@@ -13,7 +13,11 @@ body {
 
 @layer base {
   :root {
+    /* Name: Regent Gray color palette
+       Author: Ilias Ism
+       URL: https://gradient.page */
 
+    /* CSS: .bg-gradient { background: var(--gradient) } */
     --gradient: linear-gradient(to top left, #000428, #004e92);
     --background: 249 100% 98.16%;
     --foreground: 249 10% 0.32%;
@@ -48,7 +52,16 @@ body {
   }
 }
 .dark {
- 
+  /* Name: Regent Gray color palette
+       Author: Ilias Ism
+       URL: https://gradient.page */
+
+  /* CSS: .bg-gradient { background: var(--gradient) } */
+  /* Name: Regent Gray color palette
+       Author: Ilias Ism
+       URL: https://gradient.page */
+
+  /* CSS: .bg-gradient { background: var(--gradient) } */
   --gradient: linear-gradient(to top left, #536976, #292e49);
 
   --background: 215 11.05% 3.2%;
@@ -80,8 +93,6 @@ body {
 
   --ring: 215 17% 40%;
 }
-
-
 @utility container {
   margin-inline: auto;
   padding-inline: 20px;
@@ -99,7 +110,12 @@ body {
     padding-inline: 80px;
   }
 }
+@layer base {
 
+  body {
+    @apply bg-black;
+  }
+}
 
 .dotPattern {
   background-image: radial-gradient(rgb(35, 40, 68) 1px, transparent 1px);

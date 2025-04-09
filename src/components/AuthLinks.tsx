@@ -74,14 +74,14 @@ const AuthLinks = () => {
               Blog
             </Link>
             <Link
-              href={"#"}
+              href={"/about"}
               className="text-white/70 hover:text-white transition hover:underline"
               onClick={() => setOpen(!open)}
             >
               About
             </Link>
             <Link
-              href={"#"}
+              href={"/contact"}
               className="text-white/70 hover:text-white transition hover:underline"
               onClick={() => setOpen(!open)}
             >
