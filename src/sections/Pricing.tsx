@@ -72,8 +72,8 @@ const Pricing = () => {
               className={clsx(
                 "relative flex flex-col sm:mt-6 items-center rounded-3xl border border-white/10 bg-white/[0.02] p-6 shadow-lg backdrop-blur transition-transform duration-300 ease-in-out",
                 index === 1 &&
-                  "bg-gradient-to-b from-[rgba(140,69,255,.3)] to-transparent border z-10 sm:scale-[1.02] lg:scale-[1.15]",
-                " hover:scale-[1.05] hover:duration-300 hover:shadow-[0_0_25px_rgba(140,69,255,0.6)]" // Add hover effect here
+                  "bg-gradient-to-b from-[rgba(140,69,255,.3)] to-transparent border z-10 sm:scale-[1.02] lg:scale-[1.1]",
+                " hover:scale-[1.07] hover:duration-300 hover:shadow-[0_0_25px_rgba(140,69,255,0.6)] hover:z-20" // Add hover effect here
               )}
             >
               <img
@@ -88,23 +88,65 @@ const Pricing = () => {
               <div
                 className={clsx(
                   "uppercase text-sm font-semibold mb-4 border-2 px-4 py-1 rounded-full",
-                  index === 1 ? "border-p3 text-p3" : "border-p1 text-p1"
+                  index === 1
+                    ? "border-[#C8EA80] text-p3"
+                    : "border-[#2EF2FF] text-p1"
                 )}
               >
                 {plan.title}
               </div>
 
-              <div className="flex items-baseline mb-2 text-3xl font-semibold">
-                <span>$</span>
-                <CountUp
-                  start={plan.priceMonthly}
-                  end={monthly ? plan.priceMonthly : plan.priceYearly}
-                  duration={0.4}
-                  preserveValue
-                />
-                <span className="ml-1 text-base font-normal text-white/60">
-                  /mo
-                </span>
+              <div
+                className={clsx(
+                  "flex items-baseline mb-2 text-3xl font-semibold",
+                  index === 1 ? "text-[#C8EA80]" : "text-white/80"
+                )}
+              >
+              
+                <div className="flex flex-col items-center text-center">
+                  {monthly ? (
+                    // Monthly Pricing
+                    <div className="text-3xl font-bold text-p4">
+                      $
+                      <CountUp
+                        start={Number(plan.priceYearly)}
+                        end={Number(plan.priceYearly) * 0.1}
+                        duration={0.4}
+                        preserveValue
+                      />
+                      <span className="ml-0 text-base font-normal text-white/60 ">
+                        {monthly ? "/mo" : "/year"}
+                      </span>
+                    </div>
+                  ) : (
+                    // Yearly Pricing with discount
+
+                    <div className="text-3xl font-bold text-p4 flex items-baseline gap-2">
+                      <span className="line-through text-gray-400 text-xl">
+                        ${plan.priceYearly}
+                      </span>
+                      <span className="text-[#C8EA80]">
+                        $
+                        <CountUp
+                          start={Number(plan.priceYearly)}
+                          end={Number(plan.priceYearly) * 0.8}
+                          duration={0.5}
+                          preserveValue
+                        />
+                      </span>
+                      <span className="ml-0 text-base font-normal text-white/60 ">
+                        {monthly ? "/mo" : "/year"}
+                      </span>
+                    </div>
+                  )}
+                  {monthly ? (
+                    ""
+                  ) : (
+                    <span className="text-sm ">
+                      ({`save ${Number(plan.priceYearly) * 0.2}`})
+                    </span>
+                  )}
+                </div>
               </div>
 
               <p className="text-center text-sm mb-6 text-white/80">
@@ -117,7 +159,7 @@ const Pricing = () => {
                     <img
                       src="/plans/check.png"
                       alt="check"
-                      className="w-5 h-5 mt-1"
+                      className="w-7 h-7 mt-0"
                     />
                     <span className="text-sm text-white/90">{feature}</span>
                   </li>
@@ -127,7 +169,7 @@ const Pricing = () => {
               <Button text="Get Started" size="w-full" />
 
               {index === 1 && (
-                <p className="text-sm mt-4 text-p3 text-center">
+                <p className="text-sm mt-4 text-[#C8EA80] text-center">
                   — Limited time offer —
                 </p>
               )}
