@@ -1,41 +1,77 @@
 "use client";
-import LogoIcon from "@/assets/Logo2_modified.svg";
-import MenuIcon from "@/assets/icon-menu.svg";
-import Button from "@/components/Button";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import ThemeToggle from "@/components/ThemeToggle";
-import AuthLinks from "@/components/AuthLinks";
-import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import LogoIcon from "@/assets/TriangleLogo.svg";
+import Button from "@/components/Button";
+
+const NAV_LINKS = [
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/services" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
+];
+
+const overlayVariants = {
+  hidden: {
+    opacity: 0,
+    transition: {
+      when: "afterChildren",
+      staggerChildren: 0.05,
+      staggerDirection: -1, // Reverse stagger
+    },
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.05,
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  }),
+};
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+  }, [isOpen]);
+
   return (
-    <>
-      <header className="py-4 border-b border-white/15 md:border-none sticky top-0 z-20 backdrop-blur md:backdrop-blur-none sm:block">
+    <div className="relative">
+      <header className="sticky top-0 z-30 py-4 border-b border-white/15 backdrop-blur sm:block md:border-none">
         <div className="container">
           <div className="flex justify-between items-center md:border border-white/15 md:p-2.5 rounded-xl max-w-2xl mx-auto md:backdrop-blur relative">
-            <div className="flex items-center">
-              <div className="w-10 h-10 rounded-lg inline-flex justify-center items-center border-white/15">
-                <Link href="/">
-                  <LogoIcon className="w-20 h-20" />
-                </Link>
-              </div>
-            </div>
-            <div className="hidden md:block">
+            {/* Logo */}
+            <Link
+              href="/"
+              className="w-10 h-10 flex items-center justify-center rounded-lg border border-white/15"
+            >
+              <LogoIcon className="w-20 h-20" />
+            </Link>
+
+            {/* Desktop Nav */}
+            <div className="hidden md:flex w-full max-w-2xl items-center justify-center">
               <nav className="flex gap-8 text-sm">
-                {[
-                  { name: "Home", href: "/" },
-                  { name: "Services", href: "/services" },
-                  { name: "Pricing", href: "/pricing" },
-                  { name: "Contact", href: "/contact" },
-                ].map(({ name, href }) => (
+                {NAV_LINKS.map(({ name, href }) => (
                   <Link
                     key={name}
                     href={href}
-                    onClick={toggleMenu}
                     className="text-white/70 hover:text-purple-300 transition"
                   >
                     {name}
@@ -43,97 +79,92 @@ export const Header = () => {
                 ))}
               </nav>
             </div>
-            <div className="gap-6 items-center hidden sm:flex mr-4">
-              {/* Toggle Button */}
-              <motion.button
+
+            {/* Mobile Menu Icon */}
+            <div className="md:hidden flex items-center mr-4">
+              <button
                 onClick={toggleMenu}
-                className="transition"
                 aria-label="Toggle Menu"
-                initial={false}
-                animate={{ rotate: isOpen ? 90 : 0 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="rounded-md w-8 h-8 flex items-center justify-center transition z-[101]"
               >
-                {isOpen ? (
-                  <motion.svg
-                    key="x"
-                    initial={{ opacity: 0, rotate: -90 }}
-                    animate={{ opacity: 1, rotate: 0 }}
-                    exit={{ opacity: 0, rotate: 90 }}
-                    transition={{ duration: 0.4 }}
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M18 6L6 18M6 6l12 12"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </motion.svg>
-                ) : (
-                  <motion.div
-                    key="menu"
-                    initial={{ opacity: 0, rotate: 90 }}
-                    animate={{ opacity: 1, rotate: 0 }}
-                    exit={{ opacity: 0, rotate: -90 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <MenuIcon />
-                  </motion.div>
-                )}
-              </motion.button>
+                <motion.svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  initial={false}
+                  animate={isOpen ? "open" : "closed"}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <motion.path
+                    d="M3 6h18"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    variants={{
+                      closed: { d: "M3 6h18" },
+                      open: { d: "M6 6L18 18" },
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <motion.path
+                    d="M3 12h18"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    variants={{
+                      closed: { opacity: 1 },
+                      open: { opacity: 0 },
+                    }}
+                    transition={{ duration: 0.2 }}
+                  />
+                  <motion.path
+                    d="M3 18h18"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    variants={{
+                      closed: { d: "M3 18h18" },
+                      open: { d: "M6 18L18 6" },
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </motion.svg>
+              </button>
+            </div>
+
+            {/* Desktop Join Button */}
+            <div className="hidden md:flex">
+              <Button text="Join" />
             </div>
           </div>
         </div>
       </header>
 
-      {/* Fullscreen Overlay */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={overlayVariants}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-lg flex flex-col items-center justify-center gap-8"
+            className="fixed inset-x-0 top-[72px] bottom-0 z-20 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center gap-8"
           >
-            {/* Close Button */}
-            <button
-              onClick={toggleMenu}
-              className="absolute top-6 right-6 z-[110]"
-              aria-label="Close Menu"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M6 6L18 18M6 18L18 6"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </button>
-            {[
-              { name: "Home", href: "/" },
-              { name: "Services", href: "/services" },
-              { name: "Pricing", href: "/pricing" },
-              { name: "Contact", href: "/contact" },
-            ].map(({ name, href }) => (
-              <Link
-                key={name}
-                href={href}
-                onClick={toggleMenu}
-                className="text-2xl font-semibold text-white hover:text-purple-300 transition"
-              >
-                {name}
-              </Link>
+            {NAV_LINKS.map(({ name, href }, index) => (
+              <motion.div key={name} variants={itemVariants} custom={index}>
+                <Link
+                  href={href}
+                  onClick={toggleMenu}
+                  className="text-2xl font-semibold text-white hover:text-purple-300 transition"
+                >
+                  {name}
+                </Link>
+              </motion.div>
             ))}
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 };
