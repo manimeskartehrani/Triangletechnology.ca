@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import { plans } from "../constants";
 import Button from "../components/Button";
+import Image from "next/image";
+import { sendGAEvent } from "@next/third-parties/google";
 
 const Pricing = () => {
   const [monthly, setMonthly] = useState(true); // Set monthly to true by default
@@ -83,9 +85,11 @@ const Pricing = () => {
                   " hover:scale-[1.07] hover:duration-300 hover:shadow-[0_0_25px_rgba(140,69,255,0.6)] hover:z-20"
                 )}
               >
-                <img
+                <Image
                   src={plan.logo}
                   alt={plan.title}
+                  width={isFeatured ? 112 : 80} // w-28 (112px) or w-20 (80px)
+                  height={isFeatured ? 112 : 80} // h-28 or h-20
                   className={clsx(
                     "mb-6 object-contain drop-shadow-xl",
                     isFeatured ? "w-28 h-28" : "w-20 h-20"
@@ -150,7 +154,16 @@ const Pricing = () => {
                   ))}
                 </ul>
 
-                <Button text="Get Started" size="w-full" />
+                <Button
+                  text="Get Started"
+                  onClick={() =>
+                    sendGAEvent({
+                      event: "buttonClicked",
+                      value: "xyz",
+                    })
+                  }
+                  href="/blog"
+                />
 
                 {isFeatured && (
                   <p className="text-sm mt-4 text-[#C8EA80] text-center">

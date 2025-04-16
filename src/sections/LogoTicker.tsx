@@ -6,6 +6,7 @@ import celestialLogo from "@/assets/logo-celestial.png";
 import apexLogo from "@/assets/logo-apex.png";
 import quantumLogo from "@/assets/logo-quantum.png";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export const LogoTicker = () => {
   return (
@@ -40,7 +41,7 @@ export const LogoTicker = () => {
                 apexLogo,
                 quantumLogo,
               ].map((logo) => (
-                <img
+                <Image
                   src={logo.src}
                   key={logo.src + `${Math.random() * 12}`}
                   alt="logo"

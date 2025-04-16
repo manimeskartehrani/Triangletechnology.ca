@@ -5,13 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import LogoIcon from "@/assets/TriangleLogo.svg";
 import Button from "@/components/Button";
-
-const NAV_LINKS = [
-  { name: "Home", href: "/" },
-  { name: "Services", href: "/services" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
-];
+import { NAV_LINKS } from "@/constants";
 
 const overlayVariants = {
   hidden: {
@@ -60,9 +54,9 @@ export const Header = () => {
             {/* Logo */}
             <Link
               href="/"
-              className="w-10 h-10 flex items-center justify-center rounded-lg border border-white/15"
+              className="h-12 w-12 max-w-[70px] flex items-center justify-center rounded-lg border border-white/15"
             >
-              <LogoIcon className="w-20 h-20" />
+              <LogoIcon className="w-20 h-20 cursor-pointer" />
             </Link>
 
             {/* Desktop Nav */}
@@ -149,7 +143,7 @@ export const Header = () => {
             exit="hidden"
             variants={overlayVariants}
             transition={{ duration: 0.3 }}
-            className="fixed inset-x-0 top-[72px] bottom-0 z-20 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center gap-8"
+            className="fixed inset-x-0 top-[72px] bottom-0 z-[100] bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center gap-8"
           >
             {NAV_LINKS.map(({ name, href }, index) => (
               <motion.div key={name} variants={itemVariants} custom={index}>

@@ -91,7 +91,7 @@ export const CallToAction = () => {
             </p>
 
             <div className="flex justify-center mt-8">
-              <Button text="Join Waitlist" size="w-40" />
+              <Button text="Join Waitlist" />
             </div>
           </div>
         </motion.div>

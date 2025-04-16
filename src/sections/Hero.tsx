@@ -86,7 +86,7 @@ export const Hero = () => {
           technology meets user-friendly SEO tools.
         </p>
         <div className="flex justify-center mt-6 md:mt-36">
-          <Button text="join waitlist" size="md:w-44 md:h-12" />
+          <Button text="join waitlist" />
         </div>
       </div>
     </motion.section>

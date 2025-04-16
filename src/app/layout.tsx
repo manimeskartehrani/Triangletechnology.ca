@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { Inter } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 import "./globals.css";
@@ -22,6 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="G-MM7BW6X71V" />
       <body className={twMerge(inter.className, " text-white antialiased  ")}>
         <ThemeContextProvider>
           <ThemeProvider>

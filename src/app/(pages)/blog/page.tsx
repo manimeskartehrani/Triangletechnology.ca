@@ -1,22 +1,20 @@
-import React from "react";
-import CardList from "@/components/CardList";
-import CategoryList from "@/components/CategoryList";
-import Featured from "@/components/Featured";
-import Menu from "@/components/Menu";
 
-export default function blog() {
+import { getAllPosts } from "@/lib/markdown";
+import BlogCard from "@/components/BlogCard";
+
+export default async function BlogPage() {
+  const posts = await getAllPosts();
+
   return (
-    <div className="ml-auto mr-auto pl-20 pr-20">
-      <Featured />
-      <CategoryList
-        titleText="Business Categories"
-        setting="justify-between "
-        width="w-1/5"
-      />
-      <div className="flex gap-12 sm:flex-col ">
-        <CardList />
-        <Menu />
+    <section className="container py-20">
+      <h1 className="text-4xl font-bold mb-10">Our Blog</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {posts.length === 0 ? (
+          <p>No blog posts found.</p>
+        ) : (
+          posts.map((post) => <BlogCard key={post.slug} post={post} />)
+        )}
       </div>
-    </div>
+    </section>
   );
 }
