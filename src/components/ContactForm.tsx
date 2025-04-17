@@ -109,7 +109,7 @@ export default function ContactForm() {
           />
         </div>
         <div className="flex justify-end">
-        <Button text={loading ? "Sending..." : "Send Message"} />       
+        <Button  href="/contact" text={loading ? "Sending..." : "Send Message"} className="w-40" />     
          </div>
       </form>
     </div>

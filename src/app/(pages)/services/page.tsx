@@ -2,6 +2,7 @@
 
 import { FC } from "react";
 import Link from "next/link";
+import Button from "@/components/Button";
 
 const ServicesPage: FC = () => {
   return (
@@ -87,12 +88,7 @@ const ServicesPage: FC = () => {
           Our team of experts is ready to help you achieve your goals. Let’s
           work together to create a customized strategy for your business.
         </p>
-        <Link
-          href="/contact"
-          className="inline-block py-2 px-6 bg-purple-600 text-white text-lg rounded-lg shadow-lg hover:bg-purple-700 transition"
-        >
-          Get in Touch
-        </Link>
+        <Button href="/contact" text="Get in Touch" className="w-40" />
       </section>
     </div>
   );

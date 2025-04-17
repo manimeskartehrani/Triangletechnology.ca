@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import LogoIcon from "@/assets/TriangleLogo.svg";
 import Button from "@/components/Button";
 import { NAV_LINKS } from "@/constants";
+import { useOutsideMultiple } from "@/hooks/useOutsideClick";
 
 const overlayVariants = {
   hidden: {
@@ -46,9 +47,17 @@ export const Header = () => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
 
+  const headerRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  useOutsideMultiple([headerRef, overlayRef], () => setIsOpen(false), isOpen);
+
   return (
     <div className="relative">
-      <header className="sticky top-0 z-30 py-4 border-b border-white/15 backdrop-blur sm:block md:border-none">
+      <header
+        ref={headerRef}
+        className="sticky top-0 z-30 py-4 border-b border-white/15 backdrop-blur sm:block md:border-none"
+      >
         <div className="container">
           <div className="flex justify-between items-center md:border border-white/15 md:p-2.5 rounded-xl max-w-2xl mx-auto md:backdrop-blur relative">
             {/* Logo */}
@@ -135,9 +144,11 @@ export const Header = () => {
       </header>
 
       {/* Mobile Menu Overlay */}
+
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            // ref={overlayRef}
             initial="hidden"
             animate="visible"
             exit="hidden"
@@ -149,7 +160,10 @@ export const Header = () => {
               <motion.div key={name} variants={itemVariants} custom={index}>
                 <Link
                   href={href}
-                  onClick={toggleMenu}
+                  onClick={(e) => {
+                    e.stopPropagation(); // prevent bubbling
+                    setIsOpen(false);
+                  }}
                   className="text-2xl font-semibold text-white hover:text-purple-300 transition"
                 >
                   {name}

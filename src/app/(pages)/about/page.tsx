@@ -1,6 +1,7 @@
 "use client";
 import { FC, useState, useEffect } from "react";
 import Link from "next/link";
+import Button from "@/components/Button";
 
 const AboutPage: FC = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -78,12 +79,8 @@ const AboutPage: FC = () => {
           today to discuss how we can assist you in achieving your business
           goals.
         </p>
-        <Link
-          href="/contact"
-          className="inline-block py-2 px-6 bg-purple-600 text-white text-lg rounded-lg shadow-lg hover:bg-purple-700 transition"
-        >
-          Contact Us
-        </Link>
+        <Button  href="/contact" text="Get in Touch" className="w-40" /> 
+        
       </section>
     </div>
   );
