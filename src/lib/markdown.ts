@@ -2,38 +2,14 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { Post } from "@/types"; // Import the Post type
+
 import { marked } from "marked";
 
-// export function getAllPosts(): Post[] {
-//   const files = fs.readdirSync(postsDir).filter((file) => file.endsWith(".md"));
-
-//   const posts: Post[] = files.map((filename) => {
-//     const filePath = path.join(postsDir, filename);
-//     const fileContents = fs.readFileSync(filePath, "utf-8");
-//     const { data, content } = matter(fileContents);
-
-//     const slug = filename.replace(/\.md$/, "");
-
-//     return {
-//       slug,
-//       title: data.title || "", // Ensure that title exists
-//       date: data.date || "", // Ensure that date exists
-//       tags: data.tags || [], // Ensure that tags exists
-//       category: data.category || "", // Ensure category exists
-//       content,
-//     };
-//   });
-
-//   return posts.sort(
-//     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-//   );
-// }
 
 const postsDirectory = path.join(process.cwd(), "src/blog/posts");
 
 export function getAllPosts() {
-//   console.log("Reading posts from:", postsDirectory);
+
 
   if (!fs.existsSync(postsDirectory)) {
     console.log("❌ postsDirectory does not exist.");
@@ -41,7 +17,6 @@ export function getAllPosts() {
   }
 
   const fileNames = fs.readdirSync(postsDirectory);
-//   console.log("Found files:", fileNames);
 
   const posts = fileNames
     .filter((file) => file.endsWith(".md"))

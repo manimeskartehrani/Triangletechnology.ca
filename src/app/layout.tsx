@@ -12,7 +12,7 @@ import { Footer } from "@/sections/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Triangle",
+  title: "Triangle – Elevate Your SEO",
   description: "Triangle Technology",
 };
 
@@ -30,8 +30,8 @@ export default function RootLayout({
         )}
         <ThemeContextProvider>
           <ThemeProvider>
-            <div className="min-h-screen bg-black ">
-              <div className=" ml-auto mr-auto dark:bg-black">
+            <div className="min-h-screen bg-[#0f0616] ">
+              <div className=" ml-auto mr-auto">
                 <Header />
                 {children}
                 <Footer />

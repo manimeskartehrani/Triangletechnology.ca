@@ -13,7 +13,7 @@ const Pricing = () => {
   const [monthly, setMonthly] = useState(true); // Set monthly to true by default
 
   return (
-    <section className="py-20 md:py-28 bg-black text-white">
+    <section className="py-20 md:py-28 text-white">
       <div className="container">
         {/* Heading */}
         <motion.h3
@@ -144,10 +144,12 @@ const Pricing = () => {
                 <ul className="mb-6 space-y-3 w-full">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
-                      <img
+                        <Image
                         src="/plans/check.png"
                         alt="check"
-                        className="w-7 h-7 mt-0"
+                        className="mt-0"
+                        width={30}
+                        height={30}
                       />
                       <span className="text-sm text-white/90">{feature}</span>
                     </li>

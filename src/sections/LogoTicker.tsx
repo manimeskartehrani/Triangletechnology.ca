@@ -14,7 +14,7 @@ export const LogoTicker = () => {
       <div className="container">
         <div className="flex items-center">
           <div className="flex-1 md:flex-none ">
-            <h2 className="">Trusted by top innovative teams</h2>
+            <h2>Trusted by top innovative teams</h2>
           </div>
           <div className="flex flex-1 overflow-hidden gap-5 mask-image-gradient-to-r from-transparent to-black/80 to-20%">
             <motion.div

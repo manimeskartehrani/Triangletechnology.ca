@@ -100,4 +100,3 @@ export const CallToAction = () => {
   );
 };
 
-// mask-image-radial-at-c from-black to-60% to-transparent

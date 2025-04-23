@@ -66,10 +66,12 @@ export const Testimonials = () => {
                 </div>
                 <div className="flex items-center gap-3 mt-5">
                   <div className="relative after:content-[''] after:absolute after:inset-0 after:bg-[rgb(140,69,244)] after:mix-blend-soft-light before:content-[''] before:absolute before:inset-0 before:border before:border-white/30 before:z-10 before:rounded-lg">
-                    <Image
+                  <Image
                       src={testimonial.avatarImg}
                       alt={`Avatar for ${testimonial.name}`}
-                      className="h-11 w-11 rounded-lg grayscale "
+                      className=" rounded-lg grayscale "
+                      width={48}
+                      height={48}
                     />
                   </div>
                   <div className="">

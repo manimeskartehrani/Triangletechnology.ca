@@ -6,7 +6,7 @@ import { getAllBlogPosts } from "@/lib/getAllBlogPosts";
 
 export const dynamic = 'force-dynamic';
 
-const BASE_URL = "https://triangletechnology.ca";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -15,11 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries = staticRoutes.map(
     (route): MetadataRoute.Sitemap[number] => ({
       url: `${BASE_URL}${route}`,
-      lastModified: new Date().toLocaleDateString("luxon", {
-        year: "numeric",
-        month: "numeric",
-        day: "numeric",
-      }).replaceAll("/","-"),
+      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     })
@@ -30,11 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const posts = await getAllBlogPosts(); // [{ slug, updatedAt }, …]
     const blogEntries = posts.map((post): MetadataRoute.Sitemap[number] => ({
       url: `${BASE_URL}/blog/${post.slug}`,
-      lastModified: new Date(post.updatedAt).toLocaleDateString("luxon", {
-        year: "numeric",
-        month: "numeric",
-        day: "numeric",
-      }).replaceAll("/","-"),
+      lastModified: new Date(post.updatedAt),
       changeFrequency: "weekly",
       priority: 0.7,
     }));

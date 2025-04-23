@@ -53,10 +53,10 @@ export const Header = () => {
   useOutsideMultiple([headerRef, overlayRef], () => setIsOpen(false), isOpen);
 
   return (
-    <div className="relative">
+    <>
       <header
         ref={headerRef}
-        className="sticky top-0 z-30 py-4 border-b border-white/15 backdrop-blur sm:block md:border-none"
+        className="sticky top-0 z-30 py-4 backdrop-blur sm:block md:border-none"
       >
         <div className="container">
           <div className="flex justify-between items-center md:border border-white/15 md:p-2.5 rounded-xl max-w-2xl mx-auto md:backdrop-blur relative">
@@ -173,6 +173,6 @@ export const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 };

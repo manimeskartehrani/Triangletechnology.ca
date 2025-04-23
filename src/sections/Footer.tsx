@@ -2,6 +2,7 @@ import Logo from "@/assets/TriangleLogo.svg";
 import XSocial from "@/assets/social-x.svg";
 import InstaSocial from "@/assets/social-instagram.svg";
 import YTScocial from "@/assets/social-youtube.svg";
+import LSocial from "@/assets/social-linkedin.svg";
 import Link from "next/link";
 import { NAV_LINKS } from "@/constants";
 
@@ -33,6 +34,7 @@ export const Footer = () => {
             <XSocial className="text-white/40 hover:text-white transition" />
             <InstaSocial className="text-white/40 hover:text-white transition" />
             <YTScocial className="text-white/40 hover:text-white transition" />
+            <LSocial className="text-white/40 hover:text-white transition" />
           </div>
         </div>
       </div>

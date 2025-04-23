@@ -73,13 +73,7 @@ const Button: React.FC<ButtonProps> = ({
         style={{ maskImage }}
         className="absolute inset-0 -m-px border border-[#A369FF] rounded-xl"
       />
-
-      {/* Layered borders & shadows */}
-      {/* <div className="absolute inset-0">
-        <div className="rounded-lg border border-white/20 absolute inset-0 mask-image-gradient-to-t from-black to-transparent" />
-        <div className="rounded-lg border absolute inset-0 border-white/40 mask-image-gradient-to-t from-black to-transparent" />
-        <div className="absolute inset-0 shadow-[0_0_10px_rgb(140,69,255,.7)_inset] rounded-lg" />
-      </div> */}
+     
       <span className="relative z-20">{text}</span>
     </>
   );
