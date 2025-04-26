@@ -1,7 +1,6 @@
 // pages/services.tsx
 
 import { FC } from "react";
-import Link from "next/link";
 import Button from "@/components/Button";
 
 const ServicesPage: FC = () => {

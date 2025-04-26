@@ -45,7 +45,10 @@ export const LogoTicker = () => {
                   src={logo.src}
                   key={logo.src + `${Math.random() * 12}`}
                   alt="logo"
-                  className="h-6 w-auto"
+                  height={24}
+                  width={85}
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  className="object-contain"
                 />
               ))}
             </motion.div>

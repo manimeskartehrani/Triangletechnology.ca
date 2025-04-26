@@ -1,6 +1,3 @@
-"use client";
-
-import AuthLinks from "@/components/AuthLinks";
 import { CallToAction } from "@/sections/CallToAction";
 import { Features } from "@/sections/Features";
 import { Hero } from "@/sections/Hero";

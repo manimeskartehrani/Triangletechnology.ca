@@ -14,7 +14,7 @@ export const Footer = () => {
       <div className="container">
         <div className="flex flex-col lg:flex-row lg:items-center gap-8">
           <div className="flex gap-2 items-center lg:flex-1">
-            <Link href="/" className="flex items-center justify-cente">
+            <Link href="/" className="flex items-center justify-center" aria-label="Back to homepage">
               <Logo className="h-16 w-auto max-w-[100px] cursor-pointer" />
             </Link>
             <div className="font-medium leading-none">

@@ -45,8 +45,6 @@ export default function ContactForm() {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.message);
 
       setSuccess(true);
       setFormData({ name: "", email: "", message: "" });
@@ -56,14 +54,6 @@ export default function ContactForm() {
 
     setLoading(false);
   };
-
-  // Here you would send data to an API or server
-  // console.log("Form Submitted:", formData);
-
-  // // Simulate success response
-  // setSuccess(true);
-  // setFormData({ name: "", email: "", message: "" });
-  //};
 
   return (
     <div className="w-150 mx-auto p-10 rounded-4xl border border-white/15 shadow-md text-white/70">

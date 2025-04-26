@@ -1,11 +1,10 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+/* @import "lostisworld/tailwind-mask" */
+/* @import "tailwindcss-animate"
+@import "typography" */
+/* @import "tailwind-gradient-mask-image"; */
 
 @theme {
-  --font-body: "Open Sans", sans-serif;
-  --font-heading: "Poppins", sans-serif;
-
   --breakpoint-*: initial;
   --breakpoint-sm: 480px;
   --breakpoint-md: 768px;
@@ -24,25 +23,34 @@
   }
 }
 
-@layer base {
-  body {
-    @apply font-body;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-heading;
-  }
+:root {
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
 }
 
-@layer utility {
+@layer base {
   .container {
     margin-inline: auto;
     padding-inline: 20px;
+  }
+  .hero-t {
+    @apply border rounded-full border-white/20 absolute left-1/2 -translate-x-1/2;
+   
+  }
+  .hero-color {
+    background-image: radial-gradient(
+      50% 50% at 16.8% 18.3%,
+      white 0%,
+      rgb(184, 148, 255) 37.7%,
+      rgb(24, 0, 66) 100%
+    );
+  }
+
+  .hero-heading {
+    @apply text-[90px] font-semibold  tracking-tighter bg-clip-text text-center md:text-[160px] md:leading-none;
+  }
+  .hero-subheading {
+    @apply text-lg md:text-xl text-white/70 mt-2 md:mt-5 text-center mx-auto;
   }
   .dotPattern {
     background-image: radial-gradient(rgb(35, 40, 68) 1px, transparent 1px);
@@ -58,13 +66,25 @@
   }
 
   .text-gradient {
-    @apply bg-[radial-gradient(100%_100%_at_top_left,white,white,rgba(74,32,138,0.5))]
-           bg-clip-text
-           text-transparent;
+    background-image: radial-gradient(
+      100% 100% at top left,
+      white,
+      white,
+      rgba(74, 32, 138, 0.5)
+    );
+    background-clip: text;
+    color: transparent;
   }
 
   .background-layer {
-    @apply bg-[radial-gradient(75%_75%_at_center_center,rgba(140,69,255,0.5)_15%,rgba(14,0,36,0.5)_78%,transparent)] bg-clip-text text-transparent;
+    background-image: radial-gradient(
+      75% 75% at center center,
+      rgba(140, 69, 255, 0.5) 15%,
+      rgba(14, 0, 36, 0.5) 78%,
+      transparent
+    );
+    background-clip: text;
+    color: transparent;
   }
   .shadow-hero-ring {
     /* direct CSS means Tailwind will see and include it */

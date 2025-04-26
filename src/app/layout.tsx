@@ -1,19 +1,31 @@
-import type { Metadata } from "next";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics} from "@next/third-parties/google";
 import { Inter } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 import "./globals.css";
 import React from "react";
-import { ThemeContextProvider } from "@/context/ThemeContext";
-import ThemeProvider from "@/providers/ThemeProvider";
+
 import { Header } from "@/sections/Header";
 import { Footer } from "@/sections/Footer";
+import { Poppins, Open_Sans } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+export const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+  variable: "--font-heading",
+});
+export const openSans = Open_Sans({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+  variable: "--font-body",
+});
+
+export const metadata = {
   title: "Triangle – Elevate Your SEO",
-  description: "Triangle Technology",
+  description: "Triangle Technology Canada - Elevate Your SEO with AI.",
 };
 
 export default function RootLayout({
@@ -22,14 +34,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${poppins.variable} ${openSans.variable}`}>
       
       <body className={twMerge(inter.className, " text-white antialiased  ")}>
       {process.env.NEXT_PUBLIC_GA_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         )}
-        <ThemeContextProvider>
-          <ThemeProvider>
+    
             <div className="min-h-screen bg-[#0f0616] ">
               <div className=" ml-auto mr-auto">
                 <Header />
@@ -37,8 +48,7 @@ export default function RootLayout({
                 <Footer />
               </div>
             </div>
-          </ThemeProvider>
-        </ThemeContextProvider>
+
       </body>
     </html>
   );

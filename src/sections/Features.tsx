@@ -110,7 +110,7 @@ const FeatureTab = (
       </div>
       <div className="font-medium">{tab.title}</div>
       {tab.isNew && (
-        <div className="text-xs rounded-full px-2 py-0.5 bg-[#8c44ff] text-black font-semibold">
+        <div className="text-xs rounded-full px-2 py-0.5 bg-[#8c44ff] text-white font-semibold">
           new
         </div>
       )}

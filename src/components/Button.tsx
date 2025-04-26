@@ -18,7 +18,7 @@ type ButtonProps = {
   type?: "button" | "submit" | "reset";
   href?: string;
   maskImage?: string;
-  selected?: boolean;
+ 
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -27,7 +27,7 @@ const Button: React.FC<ButtonProps> = ({
   className = "",
   type = "button",
   href,
-  selected = false,
+ 
 }) => {
   const tabRefDiv = useRef<HTMLDivElement>(null);
   const tabRefButton = useRef<HTMLButtonElement>(null);

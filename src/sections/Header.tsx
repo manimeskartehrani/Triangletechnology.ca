@@ -63,9 +63,10 @@ export const Header = () => {
             {/* Logo */}
             <Link
               href="/"
+              aria-label="Back to homepage"
               className="h-12 w-12 max-w-[70px] flex items-center justify-center rounded-lg border border-white/15"
             >
-              <LogoIcon className="w-20 h-20 cursor-pointer" />
+              <LogoIcon className="w-20 h-20 cursor-pointer"  />
             </Link>
 
             {/* Desktop Nav */}
