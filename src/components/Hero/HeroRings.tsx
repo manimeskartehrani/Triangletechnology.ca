@@ -2,7 +2,7 @@
 "use client";
 import { motion } from "framer-motion";
 
-export default function HeroRings() {
+const HeroRings = () => {
   return (
     <>
       {/* Ring 1 */}
@@ -34,4 +34,6 @@ export default function HeroRings() {
       </motion.div>
     </>
   );
-}
+};
+
+export default HeroRings;
