@@ -1,10 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+<<<<<<< HEAD
   eslint: {
     // Warning: This allows production builds to successfully complete even if
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+=======
+  productionBrowserSourceMaps: true,
+  turbopack: {},
+>>>>>>> 8316e08 (Fix: Logo Component)
   webpack(config) {
     const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.(".svg")
@@ -15,6 +20,7 @@ const nextConfig = {
         ...fileLoaderRule,
         test: /\.svg$/i,
         resourceQuery: /url/, // *.svg?url
+        use: ["@svgr/webpack"],
       },
 
       {

@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+<<<<<<< HEAD
+=======
+    "baseUrl": ".",
+>>>>>>> 8316e08 (Fix: Logo Component)
     "lib": [
       "dom",
       "dom.iterable",
@@ -14,7 +18,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "allowSyntheticDefaultImports": true,
     "plugins": [
@@ -33,7 +37,12 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+<<<<<<< HEAD
     ".next/types/**/*.ts"
+=======
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+>>>>>>> 8316e08 (Fix: Logo Component)
   ],
   "exclude": [
     "node_modules"
