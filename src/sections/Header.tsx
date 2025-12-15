@@ -67,15 +67,13 @@ export const Header = () => {
               aria-label="Back to homepage"
               className="h-12 w-12 max-w-[70px] flex items-center justify-center rounded-lg border border-white/15"
             >
-<<<<<<< HEAD
-              <LogoIcon className="w-20 h-20 cursor-pointer"  />
-=======
+              <LogoIcon className="w-20 h-20 cursor-pointer" />
+
               <Image
                 src={LogoIcon}
                 alt="logo"
                 className="w-20 h-20 cursor-pointer"
               />
->>>>>>> 8316e08 (Fix: Logo Component)
             </Link>
 
             {/* Desktop Nav */}
