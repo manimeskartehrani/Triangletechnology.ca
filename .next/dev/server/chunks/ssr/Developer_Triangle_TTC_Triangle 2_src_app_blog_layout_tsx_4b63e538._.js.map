@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/mani/Developer/Triangle/TTC/Triangle%202/src/app/blog/layout.tsx"],"sourcesContent":["import React from \"react\";\n\nconst layout = ({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) => {\n  return (\n    <>{children}</>\n    // <ThemeContextProvider>\n    //   <ThemeProvider>\n    //     <div className=\"min-h-screen dark:bg-[#0f172a] dark:text-white  \">\n    //       <div className=\" max-w-[1536px] ml-auto mr-auto pl-20 pr-20 2xl:max-w-[1366px] xl:max-w-[1280px] lg:max-w-[768px] lg:pl-10 lg:pr-10 md:max-w-[640px] sm:max-w-[475px]\">\n    //         <Navbar />\n    //         {children}\n    //         <Footer />\n    //       </div>\n    //     </div>\n    //   </ThemeProvider>\n    // </ThemeContextProvider>\n  );\n};\n\nexport default layout;\n"],"names":[],"mappings":";;;;;;AAEA,MAAM,SAAS,CAAC,EACd,QAAQ,EAGR;IACA,qBACE;kBAAG;;AAaP;uCAEe"}}]
-}

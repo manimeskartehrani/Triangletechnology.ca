@@ -1,41 +1,28 @@
 # dependencies
 node_modules/
-.pnp
-.pnp.js
 
-# next.js
+# Next.js
 .next/
 out/
 dist/
 
-# production
-build/
-
-# env files (never commit secrets)
+# env (never commit)
 .env
 .env.*
 !.env.example
 
 # logs
+*.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
 pnpm-debug.log*
 bun-debug.log*
-*.log
 
-# OS / editor junk
+# OS/editor
 .DS_Store
-Thumbs.db
 .vscode/
 .idea/
 
-# TypeScript
-*.tsbuildinfo
-
-# test coverage
+# coverage
 coverage/
 
-# misc
-*.tgz
-*.swp
