@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import LogoIcon from "@/assets/TriangleLogo.svg";
 import Button from "@/components/Button";
 import { NAV_LINKS } from "@/constants";
 import { useOutsideMultiple } from "@/hooks/useOutsideClick";
@@ -67,11 +66,11 @@ export const Header = () => {
               aria-label="Back to homepage"
               className="h-12 w-12 max-w-[70px] flex items-center justify-center rounded-lg border border-white/15"
             >
-              <LogoIcon className="w-20 h-20 cursor-pointer" />
-
               <Image
-                src={LogoIcon}
+                src="/assets/TriangleLogo.svg"
                 alt="logo"
+                width={80}
+                height={80}
                 className="w-20 h-20 cursor-pointer"
               />
             </Link>
@@ -81,7 +80,7 @@ export const Header = () => {
               <nav className="flex gap-8 text-sm">
                 {NAV_LINKS.map(({ name, href }) => (
                   <Link
-                    key={name}
+                    key={href}
                     href={href}
                     className="text-white/70 hover:text-purple-300 transition"
                   >

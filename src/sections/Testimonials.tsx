@@ -1,8 +1,8 @@
 "use client";
-import avatar1 from "@/assets/avatar-1.png";
-import avatar2 from "@/assets/avatar-2.png";
-import avatar3 from "@/assets/avatar-3.png";
-import avatar4 from "@/assets/avatar-4.png";
+import avatar1 from "../../public/assets/avatar-1.png";
+import avatar2 from "../../public/assets/avatar-2.png";
+import avatar3 from "../../public/assets/avatar-3.png";
+import avatar4 from "../../public/assets/avatar-4.png";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -66,7 +66,7 @@ export const Testimonials = () => {
                 </div>
                 <div className="flex items-center gap-3 mt-5">
                   <div className="relative after:content-[''] after:absolute after:inset-0 after:bg-[rgb(140,69,244)] after:mix-blend-soft-light before:content-[''] before:absolute before:inset-0 before:border before:border-white/30 before:z-10 before:rounded-lg">
-                  <Image
+                    <Image
                       src={testimonial.avatarImg}
                       alt={`Avatar for ${testimonial.name}`}
                       className=" rounded-lg grayscale "
