@@ -1,41 +1,70 @@
 @import "tailwindcss";
-/* @import "lostisworld/tailwind-mask" */
-/* @import "tailwindcss-animate"
-@import "typography" */
-/* @import "tailwind-gradient-mask-image"; */
+@plugin "@tailwindcss/typography";
+
+@keyframes automation-zoom-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 
 @theme {
   --breakpoint-*: initial;
   --breakpoint-sm: 480px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 976px;
-
-  @keyframes automation-zoom-in {
-    0% {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
 }
 
 :root {
   text-rendering: optimizeLegibility;
   font-synthesis: none;
+  --color-dark-bg: #0f0616;
+
+  --color-text-primary: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.7);
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 @layer base {
-  .container {
-    margin-inline: auto;
-    padding-inline: 20px;
+  html {
+    font-family: var(--font-body), ui-sans-serif, system-ui;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    min-height: 100vh;
+    background-color: var(--color-dark-bg);
+    @apply text-white/80 antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .font-heading {
+    font-family: var(--font-heading), sans-serif;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
   }
   .hero-t {
     @apply border rounded-full border-white/20 absolute left-1/2 -translate-x-1/2;
-   
   }
   .hero-color {
     background-image: radial-gradient(
@@ -46,11 +75,15 @@
     );
   }
 
+  /* .hero-heading {
+    @apply font-semibold tracking-tighter bg-clip-text text-center md:leading-none sm:text-6xl md:text-7xl lg:text-8xl leading-tight;
+  } */
   .hero-heading {
-    @apply text-[90px] font-semibold  tracking-tighter bg-clip-text text-center md:text-[160px] md:leading-none;
+    @apply font-semibold tracking-tighter bg-clip-text text-center sm:text-6xl md:text-7xl lg:text-9xl;
   }
+
   .hero-subheading {
-    @apply text-lg md:text-xl text-white/70 mt-2 md:mt-5 text-center mx-auto;
+    @apply text-lg md:text-xl text-white/50 mt-2 md:mt-5 text-center mx-auto;
   }
   .dotPattern {
     background-image: radial-gradient(rgb(35, 40, 68) 1px, transparent 1px);
@@ -87,7 +120,6 @@
     color: transparent;
   }
   .shadow-hero-ring {
-    /* direct CSS means Tailwind will see and include it */
     box-shadow:
       -20px -20px 50px rgba(255, 255, 255, 0.1),
       -20px -20px 80px rgba(255, 255, 255, 0.1),
@@ -109,13 +141,19 @@
 
   .background-gradient {
     background: radial-gradient(
-      75% 75% at center center,
-      rgba(140, 69, 255, 0.5) 15%,
-      rgba(14, 0, 36, 0.5) 78%,
+      70% 70% at center center,
+      rgba(140, 69, 255, 0.5) 10%,
+      rgba(14, 0, 36, 0.5) 60%,
       transparent
     );
   }
   .mask {
     mask-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.9) 10%);
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto max-w-6xl px-4 sm:px-6;
   }
 }

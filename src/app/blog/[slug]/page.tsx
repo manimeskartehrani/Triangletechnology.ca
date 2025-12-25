@@ -1,67 +1,51 @@
-
-import { getAllPosts, getPostBySlug } from "@/lib/markdown";
+// src/app/blog/[slug]/page.tsx
 import { notFound } from "next/navigation";
+import { compileMDX } from "next-mdx-remote/rsc";
+import { getPostSlugs, getPostSource } from "@/lib/posts";
 
-type Props = {
-  params: Promise<{ slug: string }>;
-};
+export const runtime = "nodejs"; // needed anywhere you use fs
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts();
-
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  return getPostSlugs().map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: Props) {
+export default async function BlogPost({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
-  if (!post) return {};
-  return {
-    title: post.title,
-    description: post.content,
-  };
-}
 
-export default async function BlogPostPage({ params }: Props) {
-  const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post = getPostSource(slug);
+  if (!post) notFound();
 
-  if (!post) {
-    return notFound();
-  }
+  const { meta, content } = post;
+
+  const { content: MDXContent } = await compileMDX({
+    source: content,
+    options: { parseFrontmatter: false }, // we already parsed it
+    // components: { Button }, // add later if you want
+  });
 
   return (
-    <article className="container max-w-3xl py-20 mx-auto">
-      {/* Blog Post Title */}
-      <div className="mt-10">
-        <div className="flex items-center gap-12">
-          <div className="flex-1">
-            <h1 className="text-6xl text-purple-500 mb-12 xl:text-5xl lg:text-4xl md:text-3xl ">
-              {post.title}
-            </h1>
-          </div>
-        </div>
-      </div>
+    <article className="container pt-10 pb-16 md:pt-14 md:pb-20">
+      <header className="mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold text-purple-600 mb-4">
+          {meta.title}
+        </h1>
+        <time className="text-gray-400">
+          {new Date(meta.date).toLocaleDateString("en-CA", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </time>
+        {meta.description && (
+          <p className="mt-4 text-gray-300">{meta.description}</p>
+        )}
+      </header>
 
-      {/* Blog Post Meta Info */}
-      <div className="text-white/70 text-center mb-8">
-        <div>
-          <div className="flex flex-col gap-2">
-            <span className="font-bold">{post.slug}</span>
-            <span >{post.date}</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Blog Content */}
-      <div className="prose prose-lg dark:prose-invert mx-auto">
-        <div className="" dangerouslySetInnerHTML={{ __html: post.content }} />
-
-      </div>
+      <div className="prose prose-invert prose-lg max-w-none">{MDXContent}</div>
     </article>
   );
 }
-
-

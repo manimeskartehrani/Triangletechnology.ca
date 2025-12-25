@@ -69,7 +69,7 @@ export const Testimonials = () => {
                     <Image
                       src={testimonial.avatarImg}
                       alt={`Avatar for ${testimonial.name}`}
-                      className=" rounded-lg grayscale "
+                      className="rounded-lg grayscale "
                       width={48}
                       height={48}
                     />

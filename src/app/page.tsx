@@ -5,16 +5,17 @@ import { LogoTicker } from "@/sections/LogoTicker";
 import Pricing from "@/sections/Pricing";
 import { Testimonials } from "@/sections/Testimonials";
 
-
 export default function Home() {
   return (
-    <div>
+    <>
       <Hero />
-      <LogoTicker />
-      <Features />
-      <Testimonials />
-      <CallToAction />
-      <Pricing />
-    </div>
+      <div className="container mx-auto">
+        {/* <LogoTicker /> */}
+        {/* <Features />
+        <Testimonials /> */}
+        <CallToAction />
+        <Pricing />
+      </div>
+    </>
   );
 }

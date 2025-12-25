@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Contact Us | Triangle Technology",
     description:
       "Discover how Triangle Technology empowers businesses through cutting-edge AI, SEO strategies, and web solutions.",
-    url: "https://triangletechnology/contact",
+    url: "https://www.triangletechnology.ca/contact",
     siteName: "Triangle Technology Canada",
     // images: [
     //   {
@@ -33,9 +33,16 @@ export const metadata: Metadata = {
 };
 
 const contactPage = () => {
-  return  (<div className="min-h-screen flex items-center justify-center">
-  <ContactForm />
-</div>)
+  return (
+    <section className="container pt-10 pb-16 md:pt-14 md:pb-20">
+      <div className="text-center mb-16">
+        <h1 className="text-4xl md:text-5xl font-bold text-purple-600 mb-6">
+          Contact Us
+        </h1>
+      </div>
+      <ContactForm />
+    </section>
+  );
 };
 
 export default contactPage;

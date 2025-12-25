@@ -27,7 +27,7 @@ export const LogoTicker = () => {
   ];
 
   return (
-    <section className="py-20 md:py-24">
+    <section className="py-20 md:py-24 ">
       <div className="container">
         <div className="flex items-center">
           <div className="flex-1 md:flex-none">

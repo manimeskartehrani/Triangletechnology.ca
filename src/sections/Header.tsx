@@ -41,6 +41,7 @@ const itemVariants = {
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(0);
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
   useEffect(() => {
@@ -50,16 +51,27 @@ export const Header = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      if (!headerRef.current) return;
+      setHeaderHeight(headerRef.current.getBoundingClientRect().height);
+    };
+
+    updateHeaderHeight();
+    window.addEventListener("resize", updateHeaderHeight);
+    return () => window.removeEventListener("resize", updateHeaderHeight);
+  }, []);
+
   useOutsideMultiple([headerRef, overlayRef], () => setIsOpen(false), isOpen);
 
   return (
     <>
       <header
         ref={headerRef}
-        className="sticky top-0 z-30 py-4 backdrop-blur sm:block md:border-none"
+        className="sticky top-0 z-30 w-full max-w-6xl py-4 backdrop-blur sm:block md:border-none mx-auto"
       >
         <div className="container">
-          <div className="flex justify-between items-center md:border border-white/15 md:p-2.5 rounded-xl max-w-2xl mx-auto md:backdrop-blur relative">
+          <div className="flex justify-between items-center md:border border-white/15 md:p-2.5 rounded-xl max-w-4xl mx-auto md:backdrop-blur relative ">
             {/* Logo */}
             <Link
               href="/"
@@ -144,7 +156,7 @@ export const Header = () => {
 
             {/* Desktop Join Button */}
             <div className="hidden md:flex">
-              <Button text="Join" />
+              <Button text="Sign In" href="/login" />
             </div>
           </div>
         </div>
@@ -155,13 +167,13 @@ export const Header = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            // ref={overlayRef}
+            ref={overlayRef}
             initial="hidden"
             animate="visible"
             exit="hidden"
             variants={overlayVariants}
             transition={{ duration: 0.3 }}
-            className="fixed inset-x-0 top-[72px] bottom-0 z-[100] bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center gap-8"
+            className="fixed inset-x-0 top-20 bottom-0 z-[100] bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center gap-8"
           >
             {NAV_LINKS.map(({ name, href }, index) => (
               <motion.div key={name} variants={itemVariants} custom={index}>

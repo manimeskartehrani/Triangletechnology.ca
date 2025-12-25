@@ -1,26 +1,46 @@
 // next.config.mjs
-console.log("✅ next.config.mjs loaded");
+import createMDX from "@next/mdx";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // 1. Extensions
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+
+  experimental: {
+    mdxRs: true,
+  },
+
+  // 2. Webpack for SVGs
   webpack(config) {
-    // Find Next's built-in rule that handles static assets (including svg)
-    const assetRule = config.module.rules.find(
-      (rule) => rule?.test instanceof RegExp && rule.test.test(".svg")
+    const fileLoaderRule = config.module.rules.find((rule) =>
+      rule.test?.test?.(".svg")
     );
 
-    if (assetRule) {
-      assetRule.exclude = /\.svg$/i;
+    if (fileLoaderRule) {
+      fileLoaderRule.exclude = /\.svg$/i;
     }
 
     config.module.rules.push({
       test: /\.svg$/i,
-      issuer: /\.[jt]sx?$/,
+      issuer: { and: [/\.(js|ts|jsx|tsx|mdx)$/] },
       use: ["@svgr/webpack"],
     });
 
     return config;
   },
+
+  reactStrictMode: true,
 };
 
-export default nextConfig;
+// 3. Define withMDX separately
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+  options: {
+    providerImportSource: "@/components/mdx-components.tsx",
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+});
+
+// 4. Wrap and export
+export default withMDX(nextConfig);

@@ -5,96 +5,102 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Us | Triangle Technology",
   description:
-    "Learn more about Triangle Technology — our mission, our team, and how we help businesses succeed with AI, SEO, and Web Development.",
+    "Learn more about Triangle Technology — our mission, team, and how we empower businesses with AI, SEO, and modern web development.",
   openGraph: {
     title: "About Us | Triangle Technology",
     description:
-      "Discover how Triangle Technology empowers businesses through cutting-edge AI, SEO strategies, and web solutions.",
-    url: "https://triangletechnology/about",
+      "Discover how Triangle Technology helps businesses grow through innovative AI, SEO, and web solutions.",
+    url: "https://www.triangletechnology.ca/about", // ← Fix: full canonical URL
     siteName: "Triangle Technology Canada",
-    // images: [
-    //   {
-    //     url: "https://yourdomain.com/og-images/about-page.jpg",
-    //     width: 1200,
-    //     height: 630,
-    //     alt: "About Triangle Technology",
+    //     images: [
+    //       {
+    //         url: "https://www.triangletechnology.ca/og-images/about-page.jpg", // Update when you have the real image
+    //         width: 1200,
+    //         height: 630,
+    //         alt: "Triangle Technology team and mission",
+    //       },
+    //     ],
+    //     locale: "en_CA",
+    //     type: "website",
     //   },
-    // ],
-    locale: "en_US",
-    type: "website",
+    //   twitter: {
+    //     card: "summary_large_image",
+    //     title: "About Us | Triangle Technology",
+    //     description:
+    //       "Empowering businesses with cutting-edge AI, SEO, and web development solutions.",
+    //     images: ["https://www.triangletechnology.ca/og-images/about-page.jpg"],
   },
-  // twitter: {
-  //   card: "summary_large_image",
-  //   title: "About Us | Triangle Technology",
-  //   description:
-  //     "Discover how Triangle Technology empowers businesses with AI, SEO, and web development.",
-  //   images: ["https://yourdomain.com/og-images/about-page.jpg"],
-  // },
 };
+
 const AboutPage: FC = () => {
   return (
-    <div className="container mx-auto px-6 py-12">
+    <div className="container pt-10 pb-16 md:pt-14 md:pb-20">
       {/* Hero Section */}
-      <section className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-purple-600 mb-4">About Us</h1>
-        <p className="text-lg text-gray-700">
-          Learn more about our mission, vision, and the people behind Triangle
-          Technology.
+      <section className="text-center mb-16">
+        <h1 className="text-4xl md:text-5xl font-bold text-purple-600 mb-6">
+          About Us
+        </h1>
+        <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
+          Learn more about our mission, vision, and the passionate team behind
+          Triangle Technology.
         </p>
       </section>
 
       {/* Mission Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-semibold text-purple-600 mb-4">
+      <section className="mb-20">
+        <h2 className="text-3xl md:text-4xl font-semibold text-purple-600 mb-6">
           Our Mission
         </h2>
-        <p className="text-lg text-gray-700">
-          At Triangle Technology, we strive to make advanced AI, SEO, and Web
-          Development solutions accessible to businesses of all sizes. We are
-          committed to providing businesses with the tools and strategies they
-          need to succeed in the digital world. Whether you're a startup or an
-          established brand, we can help you achieve your goals through
-          innovative and tailored solutions.
+        <p className="text-lg text-white/80 max-w-4xl">
+          At Triangle Technology, we strive to make advanced AI, SEO, and web
+          development solutions accessible to businesses of all sizes. We’re
+          committed to delivering innovative, tailored strategies that drive
+          real results — whether you're a startup finding your footing or an
+          established brand scaling new heights.
         </p>
       </section>
 
       {/* Our Values Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-semibold text-purple-600 mb-4">
+      <section className="mb-20">
+        <h2 className="text-3xl md:text-4xl font-semibold text-purple-600 mb-8">
           Our Values
         </h2>
-        <ul className="list-disc pl-6 space-y-4 text-lg text-gray-700">
-          <li>
-            Innovation: We embrace cutting-edge technologies to deliver the best
+        <ul className="grid md:grid-cols-2 gap-8 max-w-5xl">
+          <li className="text-lg text-white/80">
+            <span className="font-semibold text-purple-600">Innovation:</span>{" "}
+            We embrace cutting-edge technologies to deliver forward-thinking
             solutions.
           </li>
-          <li>
-            Integrity: We believe in transparent, honest, and fair business
-            practices.
+          <li className="text-lg text-white/80">
+            <span className="font-semibold text-purple-600">Integrity:</span> We
+            believe in transparent, honest, and ethical business practices.
           </li>
-          <li>
-            Collaboration: We work closely with our clients to understand their
-            unique needs and provide customized strategies.
+          <li className="text-lg text-white/80">
+            <span className="font-semibold text-purple-600">
+              Collaboration:
+            </span>{" "}
+            We partner closely with clients to understand and meet their unique
+            needs.
           </li>
-          <li>
-            Excellence: We aim for excellence in every project, striving to
-            exceed expectations.
+          <li className="text-lg text-white/80">
+            <span className="font-semibold text-purple-600">Excellence:</span>{" "}
+            We pursue the highest standards in every project, aiming to exceed
+            expectations.
           </li>
         </ul>
       </section>
 
       {/* Call to Action */}
-      <section className="text-center">
-        <h2 className="text-3xl font-semibold text-purple-600 mb-4">
-          Ready to work with us?
+      <section className="text-center py-16 bg-gradient-to-b from-transparent to-purple-50 rounded-3xl">
+        <h2 className="text-3xl md:text-4xl font-semibold text-purple-600 mb-6">
+          Ready to Transform Your Business?
         </h2>
-        <p className="text-lg text-gray-700 mb-8">
-          We’d love to help you bring your ideas to life. Get in touch with us
-          today to discuss how we can assist you in achieving your business
-          goals.
+        <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+          Let’s bring your vision to life. Get in touch today and discover how
+          we can help you succeed in the digital world.
         </p>
 
-        <Button href="/contact" text="Get in Touch" className="w-40" />
+        <Button href="/contact" text="Get in Touch" />
       </section>
     </div>
   );

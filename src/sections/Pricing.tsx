@@ -144,7 +144,7 @@ const Pricing = () => {
                 <ul className="mb-6 space-y-3 w-full">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
-                        <Image
+                      <Image
                         src="/plans/check.png"
                         alt="check"
                         className="mt-0"
@@ -164,7 +164,7 @@ const Pricing = () => {
                       value: "xyz",
                     })
                   }
-                  href="/blog"
+                  href="/signup"
                 />
 
                 {isFeatured && (

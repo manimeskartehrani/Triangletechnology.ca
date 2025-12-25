@@ -1,18 +1,18 @@
 // app/sitemap.ts
 import type { MetadataRoute } from "next";
 import { getStaticRoutes } from "@/lib/getStaticPages";
-import { getAllBlogPosts } from "@/lib/getAllBlogPosts";
+import { getAllPosts } from "@/lib/posts";
 
-
-export const dynamic = 'force-dynamic';
+export const revalidate = 60; // adjust if you want a different ISR window
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // 1) Static pages
-  const staticRoutes = getStaticRoutes(); // ["/", "/about", ...]
-  const staticEntries = staticRoutes.map(
+  if (!BASE_URL) {
+    throw new Error("NEXT_PUBLIC_SITE_URL is required for sitemap generation");
+  }
+
+  const staticEntries = getStaticRoutes().map(
     (route): MetadataRoute.Sitemap[number] => ({
       url: `${BASE_URL}${route}`,
       lastModified: new Date(),
@@ -21,34 +21,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   );
 
-  // 2) Dynamic blog posts
-  try {
-    const posts = await getAllBlogPosts(); // [{ slug, updatedAt }, …]
-    const blogEntries = posts.map((post): MetadataRoute.Sitemap[number] => ({
+  const blogEntries = getAllPosts().map(
+    (post): MetadataRoute.Sitemap[number] => ({
       url: `${BASE_URL}/blog/${post.slug}`,
-      lastModified: new Date(post.updatedAt),
+      lastModified: new Date(post.updatedAt ?? post.date),
       changeFrequency: "weekly",
       priority: 0.7,
-    }));
-    return [...staticEntries, ...blogEntries];
-    // Generate sitemap
-  } catch (error) {
-    console.error('Failed to fetch posts:', error);
-    return []; // Return an empty sitemap or fallback
-  }
+    })
+  );
 
-
-  // 3) Dynamic Product pages
-  // const products = await getAllProducts();
-  // const productEntries = products.map(
-  //   (product): MetadataRoute.Sitemap[number] => ({
-  //     url: `${BASE_URL}/products/${product.slug}`,
-  //     lastModified: new Date(product.updatedAt),
-  //     changeFrequency: "weekly",
-  //     priority: 0.7,
-  //   })
-  // );
-
-  // 3) Merge into one array
-  
+  return [...staticEntries, ...blogEntries];
 }
