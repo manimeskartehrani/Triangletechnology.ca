@@ -5,7 +5,7 @@ import createMDX from "@next/mdx";
 const nextConfig = {
   // 1. Extensions
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-
+  output: "standalone",
   experimental: {
     mdxRs: true,
   },
