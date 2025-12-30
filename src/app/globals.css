@@ -79,7 +79,7 @@ body {
     @apply font-semibold tracking-tighter bg-clip-text text-center md:leading-none sm:text-6xl md:text-7xl lg:text-8xl leading-tight;
   } */
   .hero-heading {
-    @apply font-semibold tracking-tighter bg-clip-text text-center sm:text-6xl md:text-7xl lg:text-9xl;
+    @apply text-7xl font-semibold tracking-tighter bg-clip-text text-center md:leading-none sm:text-6xl md:text-7xl lg:text-9xl leading-tight;
   }
 
   .hero-subheading {

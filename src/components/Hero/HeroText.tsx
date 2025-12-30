@@ -15,7 +15,7 @@ const HeroText: React.FC = () => {
           <Button
             text="Join Us"
             href="/signup"
-            className="w-sm rounded-lg py-3 font-semibold"
+            className="w-xs rounded-lg py-3 font-semibold"
           />
         </div>
       </div>
