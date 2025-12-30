@@ -61,5 +61,6 @@ jobs:
           script: |
             cd /home/triangletechnology_admin/htdocs/triangletechnology.ca
             docker compose -p triangletechnology pull
+            docker compose -p triangletechnology down --remove-orphans || true
             docker compose -p triangletechnology up -d
             docker image prune -f
