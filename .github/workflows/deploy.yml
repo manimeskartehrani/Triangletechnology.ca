@@ -34,7 +34,7 @@ jobs:
           provenance: false
           sbom: false
           build-args: |
-            NEXT_TELEMETRY_DISABLED=1
+           NEXT_PUBLIC_SITE_URL=${{ secrets.NEXT_PUBLIC_SITE_URL }}
         env:
           BUILDKIT_PROGRESS: plain
 
