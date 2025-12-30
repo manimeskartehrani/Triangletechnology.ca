@@ -10,7 +10,6 @@ const HeroText: React.FC = () => {
           Elevate your site's visibility effortlessly with AI, where smart
           technology meets user-friendly SEO tools.
         </p>
-        <p>DEPLOY TEST: 2025-12-30-01</p>
 
         <div className="mt-10 md:mt-16 flex justify-center">
           <Button
