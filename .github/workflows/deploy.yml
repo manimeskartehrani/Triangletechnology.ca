@@ -34,13 +34,15 @@ jobs:
           provenance: false
           sbom: false
           build-args: |
-           NEXT_PUBLIC_SITE_URL=${{ secrets.NEXT_PUBLIC_SITE_URL }}
+            NEXT_PUBLIC_SITE_URL=${{ secrets.NEXT_PUBLIC_SITE_URL }}
         env:
           BUILDKIT_PROGRESS: plain
 
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     environment: production
+
     steps:
       - name: Assert deploy secrets exist
         run: |
@@ -56,9 +58,8 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 22
-          script: | 
-           cd /home/triangletechnology_admin/htdocs/triangletechnology.ca
-           docker compose -p triangletechnology pull
-           docker compose -p triangletechnology up -d
-           docker image prune -f
-
+          script: |
+            cd /home/triangletechnology_admin/htdocs/triangletechnology.ca
+            docker compose -p triangletechnology pull
+            docker compose -p triangletechnology up -d
+            docker image prune -f
