@@ -5,7 +5,8 @@ import { getAllPosts } from "@/lib/posts";
 
 export const revalidate = 60; // adjust if you want a different ISR window
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL;
+const BASE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://triangletechnology.ca";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   if (!BASE_URL) {
