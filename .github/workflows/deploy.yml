@@ -39,19 +39,25 @@ jobs:
           BUILDKIT_PROGRESS: plain
 
   deploy:
-    needs: build
     runs-on: ubuntu-latest
     environment: production
-
     steps:
-      - name: Deploy on VPS (pull + restart)
+      - name: Assert deploy secrets exist
+        run: |
+          test -n "${{ secrets.VPS_HOST }}" || (echo "VPS_HOST is EMPTY" && exit 1)
+          test -n "${{ secrets.VPS_USER }}" || (echo "VPS_USER is EMPTY" && exit 1)
+          test -n "${{ secrets.VPS_SSH_KEY }}" || (echo "VPS_SSH_KEY is EMPTY" && exit 1)
+          echo "All deploy secrets are set"
+
+      - name: Deploy on VPS
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
           script: |
-           cd /home/triangletechnology_admin/htdocs/triangletechnology.ca
-           docker compose -p triangletechnology pull
-           docker compose -p triangletechnology up -d
-           docker image prune -f
+            cd /home/triangletechnology_admin/htdocs/triangletechnology.ca
+            docker compose -p triangletechnology pull
+            docker compose -p triangletechnology up -d
+            docker image prune -f
